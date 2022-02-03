@@ -7,7 +7,7 @@ pub fn verse(n: u32) -> String {
     }
 
     let (this_bottle, this_target) = bottle_and_target(n);
-    let (next_bottle, next_target) = match n {
+    let (next_bottle, _next_target) = match n {
         0 => ("none".to_string(), "none".to_string()),
         1 => ("none".to_string(), "none".to_string()),
         _ => bottle_and_target(n - 1),
