@@ -8,17 +8,28 @@ pub enum LogLevel {
     Info,
     Warning,
     Error,
+    Debug,
 }
 /// primary function for emitting logs
 pub fn log(level: LogLevel, message: &str) -> String {
-    unimplemented!()
+    let prefix = match level {
+        LogLevel::Info => "[INFO]: ",
+        LogLevel::Warning => "[WARNING]: ",
+        LogLevel::Error => "[ERROR]: ",
+        LogLevel::Debug => "[DEBUG]: ",
+    };
+    prefix.to_owned() + message
 }
 pub fn info(message: &str) -> String {
-    unimplemented!()
+    log(LogLevel::Info, message)
 }
 pub fn warn(message: &str) -> String {
-    unimplemented!()
+    log(LogLevel::Warning, message)
 }
 pub fn error(message: &str) -> String {
-    unimplemented!()
+    log(LogLevel::Error, message)
+}
+
+pub fn debug(message: &str) -> String {
+    log(LogLevel::Debug, message)
 }
