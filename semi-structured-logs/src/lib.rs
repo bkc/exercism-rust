@@ -1,7 +1,3 @@
-// This stub file contains items which aren't used yet; feel free to remove this module attribute
-// to enable stricter warnings.
-#![allow(unused)]
-
 /// various log levels
 #[derive(Clone, PartialEq, Debug)]
 pub enum LogLevel {
@@ -13,12 +9,12 @@ pub enum LogLevel {
 /// primary function for emitting logs
 pub fn log(level: LogLevel, message: &str) -> String {
     let prefix = match level {
-        LogLevel::Info => "[INFO]: ",
-        LogLevel::Warning => "[WARNING]: ",
-        LogLevel::Error => "[ERROR]: ",
-        LogLevel::Debug => "[DEBUG]: ",
+        LogLevel::Info => "INFO",
+        LogLevel::Warning => "WARNING",
+        LogLevel::Error => "ERROR",
+        LogLevel::Debug => "DEBUG",
     };
-    prefix.to_owned() + message
+    format!("[{}]: {}", prefix, message)
 }
 pub fn info(message: &str) -> String {
     log(LogLevel::Info, message)
