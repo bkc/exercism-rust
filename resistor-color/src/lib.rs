@@ -1,18 +1,9 @@
-#[cfg(not(feature = "use_strum"))]
 use std::fmt;
 
 use enum_iterator::IntoEnumIterator;
 use int_enum::IntEnum;
 
-#[cfg(feature = "use_strum")]
-// Strum contains all the trait definitions
-extern crate strum;
-#[cfg(feature = "use_strum")]
-#[macro_use]
-extern crate strum_macros;
-
 #[repr(u8)]
-#[cfg_attr(feature = "use_strum", derive(Display))]
 #[derive(Debug, Clone, Copy, IntoEnumIterator, IntEnum, PartialEq)]
 
 pub enum ResistorColor {
@@ -28,7 +19,6 @@ pub enum ResistorColor {
     White = 9,
 }
 
-#[cfg(not(feature = "use_strum"))]
 impl fmt::Display for ResistorColor {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         fmt::Debug::fmt(self, f)
