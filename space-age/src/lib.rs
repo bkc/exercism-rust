@@ -1,4 +1,3 @@
-#[derive(Debug)]
 pub struct Duration {
     seconds: f64,
 }
