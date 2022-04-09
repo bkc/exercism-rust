@@ -1,12 +1,13 @@
-// The code below is a stub. Just enough to satisfy the compiler.
-// In order to pass the tests you can add-to or change any of this code.
-
 #[derive(Debug)]
-pub struct Duration;
+pub struct Duration {
+    seconds: f64,
+}
+
+const SECONDS_PER_EARTH_YEAR: f64 = 31_557_600.0;
 
 impl From<u64> for Duration {
     fn from(s: u64) -> Self {
-        unimplemented!("s, measured in seconds: {}", s)
+        Duration { seconds: s as f64 }
     }
 }
 
@@ -28,9 +29,17 @@ pub struct Saturn;
 pub struct Uranus;
 pub struct Neptune;
 
-impl Planet for Mercury {}
+impl Planet for Mercury {
+    fn years_during(d: &Duration) -> f64 {
+        (d.seconds / SECONDS_PER_EARTH_YEAR) / 0.2408467
+    }
+}
 impl Planet for Venus {}
-impl Planet for Earth {}
+impl Planet for Earth {
+    fn years_during(d: &Duration) -> f64 {
+        d.seconds / SECONDS_PER_EARTH_YEAR
+    }
+}
 impl Planet for Mars {}
 impl Planet for Jupiter {}
 impl Planet for Saturn {}
