@@ -2,6 +2,8 @@
 pub fn is_valid(code: &str) -> bool {
     let mut is_valid = true;
     let mut digit_count: i32 = 0;
+    // turns out I should have used try_fold here instead of
+    // these two function level vars
     let total: u32 = code
         .chars()
         .rev()
